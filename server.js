@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 3000;
 
 // Replace this with your Slack webhook URL
 const SLACK_WEBHOOK = "https://hooks.slack.com/services/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";
-// Maria's ClickUp assignee ID
-const MARIA_ID = "95624081";
+// Maria Vina Galano's ClickUp assignee ID
+const Maria Vina Galano_ID = "95624081";
 
 app.post("/clickup", async (req, res) => {
   const event = req.body;
@@ -20,9 +20,9 @@ app.post("/clickup", async (req, res) => {
     const task = event.task || {};
     const assignees = (task.assignees || []).map(a => a.id?.toString());
 
-    // Only send if Maria is assignee
-    if (assignees.includes(MARIA_ID)) {
-      let message = `🔔 *ClickUp Update for Maria*\nTask: ${task.name || "(no name)"}`;
+    // Only send if Maria Vina Galano is assignee
+    if (assignees.includes(Maria Vina Galano_ID)) {
+      let message = `🔔 *ClickUp Update for Maria Vina Galano*\nTask: ${task.name || "(no name)"}`;
 
       if (event.history_items) {
         event.history_items.forEach(item => {
@@ -38,7 +38,7 @@ app.post("/clickup", async (req, res) => {
       await axios.post(SLACK_WEBHOOK, { text: message });
       console.log("✅ Sent to Slack:", message);
     } else {
-      console.log("ℹ️ Ignored task, not Maria’s");
+      console.log("ℹ️ Ignored task, not Maria Vina Galano’s");
     }
   } catch (err) {
     console.error("❌ Error processing event:", err.message);
